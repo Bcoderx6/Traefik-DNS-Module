@@ -1,0 +1,14 @@
+[Unit]
+Description=Traefik
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+EnvironmentFile=/etc/traefik/cloudflare.env
+ExecStart=/usr/local/bin/traefik --configfile=/etc/traefik/traefik.toml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
